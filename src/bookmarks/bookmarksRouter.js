@@ -1,6 +1,6 @@
 const express = require('express');
 const uuid = require('uuid/v4');
-const { isWebUrl } = require('valid-url');
+const { isWebUrl } = require('isweburl');
 const logger = require('../logger');
 const { store }  = require('../store');
 
@@ -29,7 +29,7 @@ bookmarksRouter
 });
 
 bookmarksRouter
-  .route('/')
+  .route('/bookmarks')
   .post(bodyParser, (req, res) => {
     for(const field of ['title', 'url', 'rating']) {
       if(!req.body[field]) {

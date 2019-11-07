@@ -13,9 +13,6 @@ const app = express();
 app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
     skip: () => NODE_ENV === 'test'
 }));
-  
-/* Middleware pipeline */  
-app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 app.use(validateBearerToken);
