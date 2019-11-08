@@ -10,7 +10,7 @@ const jsonParser = express.json();
 const serializeBookmark = bookmark => ({
   id: bookmark.id,
   title: xss(bookmark.title),
-  url: xss(bookmark.url),
+  url: bookmark.url,
   description: xss(bookmark.description),
   rating: Number(bookmark.rating),
 })

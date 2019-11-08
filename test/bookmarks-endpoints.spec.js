@@ -3,6 +3,7 @@
 const { makesBookmarksArray, makeMaliciousBookmark } = require('./bookmarks.fixtures');
 const knex = require('knex');
 const app = require('../src/app');
+const { isWebUri } = require('valid-url');
 
 //only is added so that we're only running this files while working on it
 describe('Bookmarks Endpoints', function() {
@@ -147,6 +148,7 @@ describe('Bookmarks Endpoints', function() {
               .expect(200)
               .expect(res => {
                 expect(res.body.title).to.eql(expectedBookmark.title);
+                expect(res.body.url).to.eql(expectedBookmark.url);
                 expect(res.body.description).to.eql(expectedBookmark.description);
               });
           });
